@@ -1,0 +1,63 @@
+@use '../../styles/partials/global' as *;
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+.nav {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: .0625rem solid rgba(60, 64, 67, 0.2);
+  padding: 1rem;
+
+  &__left {
+    display: flex;
+
+    &--menu{
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem;
+      font-size: 1.5rem;
+      color: $grey;
+      width: 3rem;
+      height: 3rem;
+     
+  
+      &:hover,
+      &:focus {
+        background-color: rgba(60, 64, 67, 0.1);
+        border-radius: 50%;
+      }
+  
+      svg {
+        fill: $grey;
+      }
+    }
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+
+    &--user {
+      width: 2.5rem;
+      height: 2.5rem;
+      background-color: rgba(60, 64, 67, 0.5);
+      border-radius: 1.25rem;
+    }
+  }
+
+  &__logo{
+    width: 5rem;
+  }
+
+  &__icon {
+    color: $grey;
+    display: flex;
+    align-items: center;
+  }
+}

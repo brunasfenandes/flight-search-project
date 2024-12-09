@@ -1,0 +1,19 @@
+@use '../partials/typography.scss' as *;
+@use '../partials/mixins' as *;
+@use '../partials/variables' as *;
+
+html {
+  box-sizing: border-box;
+  min-width: 20rem;
+}
+ 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}

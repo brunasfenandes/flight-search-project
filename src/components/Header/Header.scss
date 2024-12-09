@@ -1,0 +1,7 @@
+@use '../../styles/partials/global' as *;
+@use '../../styles/partials/variables' as *;
+
+.header {
+  display: flex;
+  padding: 1rem;
+}
