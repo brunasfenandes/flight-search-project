@@ -1,6 +1,7 @@
 @use '../../styles/partials/global' as *;
 @use '../../styles/partials/variables' as *;
 @use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/typography' as *;
 
 .hero {
   display: flex;
@@ -12,6 +13,19 @@
   // box-shadow: 0 2px 6px -6px rgba(60, 64, 67, .15);
   position: relative;
 
+  @include tablet {
+    padding: 0 2.25rem;
+    height: 40rem;
+  }
+
+  @include desktop {
+    max-width: 63.75rem;
+    margin: 0 auto;
+    padding: 0;
+    justify-content: center;
+    height: 43.75rem;
+  }
+
   &__image {
     display: flex;
     object-fit: contain;
@@ -20,11 +34,18 @@
     &--img {
       width: inherit;
     }
+
+    @include tablet {
+      width: 43.75rem;
+    }
+
+    @include desktop {
+      width: 43.75rem;
+    }
   }
 
   &__title {
     font-size: 2.25rem;
-    // background-color: rgb(147, 233, 233);
     display: flex;
     width: 100%;
     justify-content: center;
@@ -46,28 +67,33 @@
       border: .0625rem solid $border;
       border-radius: .25rem;
       outline: none;
-      width: 43vw;
-  
-      // &:focus {
-      // border: .125rem solid $BrainFlix-Blue;
-      // }
+      width: 100%;
   
       &::placeholder {
         padding: 0 0.5rem;
         font-size: 1rem;
-        font-weight: 500;
+        // font-weight: 500;
         color: $grey;
+        font-family: $font-stack;
       }
   
       @include tablet {
         padding: 0 2.1rem;
-        width: 15rem;
+        // margin: 0 0.5rem ;
+        height: 3.75rem;
+        width: 100%;
       }
   
       @include desktop {
         padding: 0 2.1rem;
-        width: 15rem;
+        width: 25rem;
+        // margin: 0 0.5rem ;
+        height: 3.75rem;
       }
+    }
+
+    &--input2 {
+      margin-left: 0.7rem;
     }
   }
 
@@ -81,21 +107,28 @@
     padding: 0.5rem 0;
 
     @include tablet {
-      width: 15rem;
     }
 
     @include desktop {
-      width: 15rem;
+      max-width: 63.75rem;
+      justify-content: center;
     }
 
     &--comp {
       position: absolute;
-      top: 20px;
+      top: 25px;
       color: $border;
       display: none;
+      left: 1.25rem;
 
       @include tablet {
         display: flex;
+        left: 0.8rem;
+      }
+
+      @include desktop {
+        display: flex;
+        left: 7.1875rem;
       }
     }
 
@@ -114,7 +147,110 @@
       border: .0313rem solid $border;
 
       @include tablet {
+        width: 2.1875rem;
+        height: 2.1875rem;
         display: flex;
+        left: 47.5%;
+        top: 1.2rem;
+      }
+
+      @include desktop {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        left: 48%;
+        top: 1.2rem;
+      }
+    }
+
+    &--comp3 {
+      position: absolute;
+      top: 25px;
+      color: $border;
+      display: none;
+      left: 1.25rem;
+
+      @include tablet {
+        display: flex;
+        left: 52.5%;
+      }
+
+      @include desktop {
+        display: flex;
+        left: 33.3rem;
+      }
+    }
+
+    &--comp4 {
+      position: absolute;
+      top: 13px;
+      background-color: $white;
+      // border: 1px solid $grey;
+      left: 48%;
+      width: .7rem;
+      height: .7rem;
+      border-radius: 50%;
+
+      @include tablet {
+        display: flex;
+        left: 49%;
+        top: 13px;
+        width: .95rem;
+        height: .9rem;
+      }
+
+      @include desktop {
+        display: flex;
+        left: 49.2%;
+        top: 17px;
+        width: 1rem;
+        height: .95rem;
+      }
+    }
+
+    &--comp5 {
+      position: absolute;
+      top: 39px;
+      background-color: $white;
+      // border: 1px solid $grey;
+      left: 48%;
+      width: .7rem;
+      height: .7rem;
+      border-radius: 50%;
+
+      @include tablet {
+        display: flex;
+        left: 49%;
+        top: 47px;
+        width: .95rem;
+        height: .95rem;
+      }
+
+      @include desktop {
+        display: flex;
+        left: 49%;
+        top: 45px;
+        width: 1.2rem;
+        height: .95rem;
+      }
+    }
+
+    &--comp6 {
+      position: absolute;
+      top: 12px;
+      color: $border;
+      display: none;
+      left: 0.5rem;
+
+      @include tablet {
+        display: flex;
+        left: 0.7rem;
+      }
+
+      @include desktop {
+        top: 15px;
+        display: flex;
+        left: 0.8rem;
       }
     }
   }
@@ -131,11 +267,14 @@
     border-radius: .25rem;
 
     @include tablet {
-      width: 15rem;
+      width: 100%;
     }
 
     @include desktop {
-      width: 15rem;
+      max-width: 815px;
+      justify-content: center;
+      margin: 0 auto;
+      height: 3.75rem;
     }
 
     &--input {
@@ -153,23 +292,34 @@
       &::placeholder {
         padding: 0 0.5rem;
         font-size: 1rem;
-        font-weight: 500;
+        font-family: $font-stack;
         color: $grey;
       }
   
       @include tablet {
         padding: 0 2.1rem;
-        width: 15rem;
+        width: 100%;
       }
   
       @include desktop {
         padding: 0 2.1rem;
-        width: 15rem;
+        width: 25rem;
       }
+
+      
     }
 
     &--input2 {
       border-left: .0625rem solid $border;
+      display: flex;
+
+      @include tablet{
+        width: 100%;
+      }
+
+      @include desktop{
+        width: 400px;
+      }
     }
   }
 }
