@@ -17,3 +17,23 @@ html {
 a {
   text-decoration: none;
 }
+
+.button {
+  border: none;
+  background-color: transparent;
+
+  &--explore {
+    background-color: $blue-button;
+    color: $white;
+    padding: 1rem 1.5rem;
+    border-radius: 1.5rem;
+    height: 2.5rem;
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    font-weight: 600;
+    position: absolute;
+    bottom: -20px
+  }
+}
