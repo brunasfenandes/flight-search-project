@@ -24,6 +24,10 @@ a {
   text-decoration: none;
 }
 
+ul {
+  list-style-type: none;
+}
+
 .button {
   border: none;
   background-color: transparent;
@@ -31,6 +35,7 @@ a {
   font-weight: 500;
   font-size: 15px;
   cursor: pointer;
+  outline: none;
 
   &--explore {
     background-color: $blue-button;
