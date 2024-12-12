@@ -5,11 +5,12 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import DateRangeIcon from '@mui/icons-material/DateRange';
 import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
 import SearchIcon from '@mui/icons-material/Search';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import FlightsList from '../FlightsList/FlightsLis';
+import { ClipLoader } from "react-spinners";
 
 
 export default function Hero() {
@@ -31,14 +32,14 @@ export default function Hero() {
           locale: 'en-US',
         },
         headers: {
-          'X-RapidAPI-Key': '5cff7a3eb5msh8793c3941b8b594p1ce3a3jsn5ee738df63b3',
+          'X-RapidAPI-Key': 'bc183226e9msh32db7d0b04a69f2p1da4c5jsndd8672ba16cc',
           'X-RapidAPI-Host': 'sky-scrapper.p.rapidapi.com',
         }
       });
 
 
       setLoading(false);
-      console.log('API Response:', data);
+      // console.log('API Response:', data);
       return data.data;
     } catch (error) {
       setLoading(false);
@@ -72,13 +73,13 @@ export default function Hero() {
           returnDate,
         },
         headers: {
-          'X-RapidAPI-Key': '5cff7a3eb5msh8793c3941b8b594p1ce3a3jsn5ee738df63b3',
+          'X-RapidAPI-Key': 'bc183226e9msh32db7d0b04a69f2p1da4c5jsndd8672ba16cc',
           'X-RapidAPI-Host': 'sky-scrapper.p.rapidapi.com',
         },
       });
   
     setLoading(false);
-    console.log('API Response', data);
+    // console.log('API Response', data);
     return data.data;
   } catch (error) {
     setLoading(false);
@@ -112,8 +113,8 @@ export default function Hero() {
       return;
     }
   
-    console.log('originSkyId:', originSkyId);
-    console.log('destinationSkyId:', destinationSkyId);
+    // console.log('originSkyId:', originSkyId);
+    // console.log('destinationSkyId:', destinationSkyId);
   
     try {
       const flights = await fetchFlights(
@@ -132,12 +133,35 @@ export default function Hero() {
       };
   
       setResults(updatedResults);
-      console.log(updatedResults);
+      // console.log(updatedResults);
     } catch (error) {
       console.error('Error fetching flights:', error);
       setError('Could not fetch flight data.');
     }
+
+    // const isDataAvailable = origin?.presentation?.suggestionTitle &&
+    // destination?.presentation?.suggestionTitle &&
+    // flights?.itineraries;
+
+    // useEffect(() => {
+    //   if (isDataAvailable) {
+    //     setLoading(true); 
+    //     const timer = setTimeout(() => setLoading(false), 2000);
+    //     return () => clearTimeout(timer);
+    //   }
+    // }, [isDataAvailable]);
+
+    // if (loading) {
+    //   return (
+    //     <div className="loading-container">
+    //       <ClipLoader color="#123abc" loading={loading} size={50} />
+    //       <p>Loading available flights...</p>
+    //     </div>
+    //   );
+    // }
   };
+
+
 
   return (
     <>
@@ -150,7 +174,9 @@ export default function Hero() {
           />
         </div>
         
-        <div className='hero__title'>Flights</div>
+        <div className='hero__title'>
+          <h1 className='hero__title'>FLIGHTS</h1>
+        </div>
 
         <form 
           className='hero__form'
@@ -238,10 +264,11 @@ export default function Hero() {
 
       {results && 
         <FlightsList 
-          origin={setResults.origin}
-          destination={setResults.destination}
-          flights={setResults.flights}
-        />}
+          origin={results.origin}
+          destination={results.destination}
+          flights={results.flights}
+        />
+      }
     </>
   )
 }
