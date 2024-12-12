@@ -1,14 +1,13 @@
 import '../Header/Header.scss';
-// import Hero from '../Hero/Hero';
 import NavBar from '../NavBar/NavBar';
+import { useState } from 'react';
 
 
-export default function Header() {
+export default function Header({ isDarkMode, toggleDarkMode }) {
+  
   return (
     <>
-      <NavBar />
-
-      {/* <Hero /> */}
+      <NavBar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
     </>
   )
 }

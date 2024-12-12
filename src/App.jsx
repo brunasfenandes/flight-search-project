@@ -10,27 +10,39 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import Header from './components/Header/Header';
 import HomePage from './pages/HomePage/HomePage';
+import Footer from './components/Footer/Footer';
+import FlightDetailsPage from './pages/FlightDetailsPage/FlightDetailsPage';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setIsDarkMode((prevMode) => !prevMode);
+  };
+
 
   return (
     <>
-      <BrowserRouter>
-        <Header/>
-        <ToastContainer 
-        position="top-center"
-        // autoClose={2000}
-        hideProgressBar={true}
-        closeOnClick
-        pauseOnHover
-        draggable
-        theme="light"
+      <div className={`app app__${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
+        <BrowserRouter>
+        <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
+        <ToastContainer
+          position="top-center"
+          hideProgressBar={true}
+          closeOnClick
+          pauseOnHover
+          draggable
+          theme={isDarkMode ? 'dark' : 'light'}
         />
         <Routes>
-          <Route path="/" element={<HomePage/>} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/flight/:id" element={<FlightDetailsPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
+    </div>
     </>
   )
 }

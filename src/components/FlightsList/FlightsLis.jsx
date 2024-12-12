@@ -8,7 +8,7 @@ export default function FlightsList({ origin, flights, destination}) {
 
   return (
     <div className='fts-list'>
-      <h2 className='fts-list__title'>FLIGHTS</h2>
+      {/* <h2 className='fts-list__title'>FLIGHTS</h2> */}
 
         <Flight
           origin={origin}

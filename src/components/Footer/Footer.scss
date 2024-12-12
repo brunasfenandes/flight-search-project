@@ -1,0 +1,10 @@
+@use'../../styles/partials/variables.scss' as *;
+@use '../../styles/partials/typography.scss' as *;
+
+.footer {
+  font-family: $font-stack;
+  padding: 2.5rem;
+  text-align: center;
+  color: $grey;
+  width: 100%;
+}

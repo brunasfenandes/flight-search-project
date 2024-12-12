@@ -2,3 +2,23 @@
 @use '../src/styles/partials/typography' as *; 
 @use '../src/styles/partials/mixins' as *;
 @use '../src/styles/partials/variables' as *;
+
+.app {
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  &__light-mode {
+    background-color: $white;
+    color: $title;
+  }
+
+  &__dark-mode {
+    background-color: #121212;
+    color: $white;
+  }
+}
+
+header,
+.nav {
+  background-color: inherit;
+  color: inherit;
+}

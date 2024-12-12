@@ -1,6 +1,7 @@
 import './Flight.scss';
 import { useState, useEffect } from 'react';
 import { ClipLoader } from "react-spinners";
+import { Link } from 'react-router-dom';
 
 export default function Flight({ origin, flights, destination}) { 
   const [loading, setLoading] = useState(false);
@@ -21,7 +22,7 @@ export default function Flight({ origin, flights, destination}) {
   }, [isDataAvailable]);
 
   if (!origin && !destination && !flights) {
-    return <p>Information will be displayed here</p>;
+    return <p className='info'>Information will be displayed here<br/>🛫</p>;
   }
 
   // if (loading) {
@@ -39,25 +40,41 @@ export default function Flight({ origin, flights, destination}) {
 
   return (
     <div className="flight">
-      <h3>From: {origin.presentation.suggestionTitle}</h3>
-      <h3>To: {destination.presentation.suggestionTitle}</h3>
+      <h3 className='flight__local'>From: {origin.presentation.suggestionTitle}</h3>
+      <h3 className='flight__local flight__local--dest'>To: {destination.presentation.suggestionTitle}</h3>
       
-      <h5>Available Flights:</h5>
-      <ul>
+      <h5 className='flight__local flight__local--ava'>Available Flights:</h5>
+
+      <ul className='flight__list'>
         {flights.itineraries.map((itinerary, index) => {
           const leg = itinerary.legs[0];
           const { departure, arrival } = leg;
           const formattedDeparture = new Date(departure).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
           const formattedArrival = new Date(arrival).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
           return (
-            <li key={index} className="flight-item">
-              <p><strong>Flight {index + 1}</strong></p>
-              <p>Departure: {formattedDeparture}</p>
-              <p>Arrival: {formattedArrival}</p>
-              <p>Duration: {Math.floor(leg.durationInMinutes / 60)}h {leg.durationInMinutes % 60}m</p>
-              <p>Price: {itinerary.price.formatted}</p>
-              <p>Airline: {leg.carriers.marketing[0]?.name || 'N/A'}</p>
-            </li>
+            <Link
+              key={itinerary.id}
+              to={`/flight/${itinerary.id}`}
+              state={{ itinerary, origin, destination }}
+            >
+              <li 
+              key={index} 
+              className='flight__list--item'
+              >
+                <p className='flight__list--num'>Flight {index + 1}</p>
+
+                <div className='flight__list--left'> 
+                  <p className='flight__list--txt'>Departure: {formattedDeparture}</p>
+                  <p className='flight__list--txt'>Arrival: {formattedArrival}</p>
+                  <p className='flight__list--txt'>Duration: {Math.floor(leg.durationInMinutes / 60)}h {leg.durationInMinutes % 60}m</p>
+                </div>
+
+                <div className='flight__list--right'>
+                  <p className='flight__list--txt'>Price: {itinerary.price.formatted}</p>
+                  <p className='flight__list--txt'>Airline: {leg.carriers.marketing[0]?.name || 'N/A'}</p>
+                </div>
+              </li>
+            </Link>
           );
         })}
       </ul>

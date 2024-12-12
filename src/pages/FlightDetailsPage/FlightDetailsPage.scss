@@ -1,0 +1,124 @@
+@use '../../styles/partials/global' as *;
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+
+.fl-detail {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+
+  @include tablet {
+    padding: 2.25rem;
+  }
+
+  @include desktop {
+    padding: 2.25rem 0;
+    margin: 0 auto;
+    max-width: 63.75rem;
+    justify-content: center;
+  }
+
+  &__title {
+
+    &--loc {
+      display: flex;
+      flex-direction: column;
+      margin: 1rem 0;
+      height: 100px;
+      justify-content: space-between;
+
+      @include tablet {
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 1.5rem 0;
+      }
+
+      @include desktop {
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 1.5rem 0;
+      }
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+      flex-direction: row;
+      // flex-wrap: wrap;
+      justify-content: space-between;
+      align-content: space-between
+    }
+
+    @include desktop {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-content: space-between
+    }
+
+    &--airline{
+      display: flex;
+      padding: 1rem 0;
+      justify-content: space-between;
+
+      @include tablet {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      @include desktop {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    &--logo {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    &--left {
+      display: flex;
+      flex-direction: column;
+  
+      @include tablet {
+        width: 40%;
+        margin: 3vw 0;
+        justify-content: center;
+        align-items: center;
+      }
+  
+      @include desktop {
+        width: 30%;
+        margin: 1.25vw 0;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  
+    &--right {
+      display: flex;
+      flex-direction: column;
+  
+      @include tablet {
+        width: 40%;
+        margin: 3vw 0;
+        justify-content: center;
+        align-items: center;
+      }
+  
+      @include desktop {
+        width: 30%;
+        margin: 1.25vw 0;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+}

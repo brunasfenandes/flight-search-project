@@ -9,6 +9,7 @@
   justify-content: space-between;
   border-bottom: .0625rem solid $border;
   padding: 1rem;
+  width: 100%;
 
   &__left {
     display: flex;
@@ -53,11 +54,16 @@
 
   &__logo{
     width: 5rem;
+    filter: invert(0);
   }
 
   &__icon {
     color: $grey;
     display: flex;
     align-items: center;
+  }
+
+  .dark-mode & .nav__logo {
+    filter: invert(1);
   }
 }

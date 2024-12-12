@@ -39,7 +39,7 @@ export default function Hero() {
 
 
       setLoading(false);
-      // console.log('API Response:', data);
+      console.log('API Response:', data);
       return data.data;
     } catch (error) {
       setLoading(false);
@@ -79,7 +79,7 @@ export default function Hero() {
       });
   
     setLoading(false);
-    // console.log('API Response', data);
+    console.log('API Response', data);
     return data.data;
   } catch (error) {
     setLoading(false);
@@ -113,8 +113,8 @@ export default function Hero() {
       return;
     }
   
-    // console.log('originSkyId:', originSkyId);
-    // console.log('destinationSkyId:', destinationSkyId);
+    console.log('originSkyId:', originSkyId);
+    console.log('destinationSkyId:', destinationSkyId);
   
     try {
       const flights = await fetchFlights(
@@ -133,38 +133,17 @@ export default function Hero() {
       };
   
       setResults(updatedResults);
-      // console.log(updatedResults);
+      console.log(updatedResults);
     } catch (error) {
       console.error('Error fetching flights:', error);
       setError('Could not fetch flight data.');
     }
-
-    // const isDataAvailable = origin?.presentation?.suggestionTitle &&
-    // destination?.presentation?.suggestionTitle &&
-    // flights?.itineraries;
-
-    // useEffect(() => {
-    //   if (isDataAvailable) {
-    //     setLoading(true); 
-    //     const timer = setTimeout(() => setLoading(false), 2000);
-    //     return () => clearTimeout(timer);
-    //   }
-    // }, [isDataAvailable]);
-
-    // if (loading) {
-    //   return (
-    //     <div className="loading-container">
-    //       <ClipLoader color="#123abc" loading={loading} size={50} />
-    //       <p>Loading available flights...</p>
-    //     </div>
-    //   );
-    // }
   };
 
 
 
   return (
-    <>
+    <main className='main'>
       <div className='hero'>
         <div className='hero__image' >
           <img
@@ -269,6 +248,6 @@ export default function Hero() {
           flights={results.flights}
         />
       }
-    </>
+    </main>
   )
 }
